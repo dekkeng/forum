@@ -1,5 +1,4 @@
 import LeftSidebar from "@/components/shared/Leftsidebar";
-// import Rightsidebar from "@/components/shared/Rightsidebar";
 import Navbar from "@/components/shared/navbar/Navbar";
 import { Toaster } from "@/components/ui/toaster";
 import React from "react";
