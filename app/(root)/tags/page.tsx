@@ -7,6 +7,7 @@ import { getAllTags } from "@/lib/actions/tag.actions";
 import type { SearchParamsProps } from "@/types";
 import type { Metadata } from "next";
 import Link from "next/link";
+
 export const metadata: Metadata = {
   title: "Tags - Forum",
 };
