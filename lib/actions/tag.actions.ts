@@ -6,6 +6,7 @@ import User from "@/models/user";
 import {
     GetAllTagsParams,
     GetQuestionsByTagIdParams,
+    GetTagByIdParams,
     GetTopInteractedTagsParams,
 } from "@/types/shared";
 import { FilterQuery } from "mongoose";
@@ -74,6 +75,23 @@ export async function getAllTags(params: GetAllTagsParams) {
     const isNext = totalTags > skipAmount + tags.length;
 
     return { tags, isNext };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function getTagById(params: GetTagByIdParams) {
+  try {
+    connectToDatabase();
+
+    const { tagId } = params;
+
+    const tag = await Tag.findOne({
+      _id: tagId,
+    });
+
+    return tag;
   } catch (error) {
     console.log(error);
     throw error;
