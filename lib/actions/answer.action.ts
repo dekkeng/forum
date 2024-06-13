@@ -8,9 +8,11 @@ import {
   AnswerVoteParams,
   CreateAnswerParams,
   DeleteAnswerParams,
+  EditAnswerParams,
   GetAnswersParams,
 } from "@/types/shared";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { connectToDatabase } from "../mongoose";
 
 export async function createAnswer(params: CreateAnswerParams) {
@@ -36,6 +38,29 @@ export async function createAnswer(params: CreateAnswerParams) {
     await User.findByIdAndUpdate(author, { $inc: { reputation: 10 } });
 
     revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function editAnswer(params: EditAnswerParams) {
+  try {
+    connectToDatabase();
+
+    const { answerId, content, path } = params;
+
+    const answer = await Answer.findById(answerId);
+
+    if (!answer) {
+      throw new Error("Answer not found");
+    }
+
+    answer.content = content;
+
+    await answer.save();
+
+    redirect(path);
   } catch (error) {
     console.log(error);
     throw error;

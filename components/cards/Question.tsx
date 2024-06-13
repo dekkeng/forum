@@ -1,4 +1,4 @@
-import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
+import { getFormattedNumber, getTimestamp } from "@/lib/utils";
 import { SignedIn } from "@clerk/nextjs";
 import Link from "next/link";
 import EditDeleteAction from "../shared/EditDeleteAction";
@@ -79,21 +79,21 @@ const Question = ({
           <Metric
             imgUrl="/assets/icons/like.svg"
             alt="Upvotes"
-            value={formatAndDivideNumber(upvotes.length)}
+            value={getFormattedNumber(upvotes.length)}
             title=" Votes"
             textStyles="small-medium text-dark400_light800"
           />
           <Metric
             imgUrl="/assets/icons/message.svg"
             alt="message"
-            value={formatAndDivideNumber(answers.length)}
+            value={getFormattedNumber(answers.length)}
             title=" Answers"
             textStyles="small-medium text-dark400_light800"
           />
           <Metric
             imgUrl="/assets/icons/eye.svg"
             alt="eye"
-            value={formatAndDivideNumber(views)}
+            value={getFormattedNumber(views)}
             title=" Views"
             textStyles="small-medium text-dark400_light800"
           />
