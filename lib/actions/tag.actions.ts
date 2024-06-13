@@ -5,7 +5,7 @@ import Tag, { TagInterface } from "@/models/tag";
 import User from "@/models/user";
 import {
     GetAllTagsParams,
-    GetQuestionsByTagIdParams,
+    GetQuestionByTagIdParams,
     GetTagByIdParams,
     GetTopInteractedTagsParams,
 } from "@/types/shared";
@@ -98,7 +98,7 @@ export async function getTagById(params: GetTagByIdParams) {
   }
 }
 
-export async function getQuestionsByTagId(params: GetQuestionsByTagIdParams) {
+export async function getQuestionsByTagId(params: GetQuestionByTagIdParams) {
   try {
     connectToDatabase();
 
