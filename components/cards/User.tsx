@@ -48,7 +48,9 @@ const User = async ({ user }: Props) => {
               ))}
             </div>
           ) : (
-            <Badge>No tags yet</Badge>
+            <Badge className="subtle-medium background-light800_dark300 text-light400_light500 line-clamp-1 rounded-md border-none px-4 py-2 uppercase">
+              No tags yet
+            </Badge>
           )}
         </div>
       </article>
