@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
 import { useTheme } from "@/context/ThemeProvider";
@@ -114,7 +114,7 @@ const Answer = ({
       const aiAnswer = await response.json();
 
       const formattedAiAnswer = aiAnswer.error
-        ? "Sorry, I could not provide an answer to your question, please try again."
+        ? "Sorry, your free tokens have been exhausted. Buy a subscription to get AI-generated answers"
         : aiAnswer.reply.replace(/\n/g, "<br />");
 
       if (editorRef.current) {

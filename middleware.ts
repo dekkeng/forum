@@ -5,7 +5,8 @@ const isPublicRoute = createRouteMatcher([
   "/sign-in(.*)",
   "/sign-up(.*)",
   "/api/clerk",
-  "/api/chatgpt",
+  "/api/openai",
+  "/api/rapidapi",
 ]);
 
 export default clerkMiddleware((auth, request) => {
