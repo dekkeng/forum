@@ -2,12 +2,16 @@ import JobWrapper from "@/components/cards/JobWrapper";
 import JobsFilter from "@/components/jobs/JobsFilter";
 import Pagination from "@/components/shared/Pagination";
 import {
-    fetchCountries,
-    fetchJobs,
-    fetchLocation,
+  fetchCountries,
+  fetchJobs,
+  fetchLocation,
 } from "@/lib/actions/job.action";
 import { Job } from "@/types";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Jobs - Forum",
+};
 interface Props {
   searchParams: {
     q: string;
