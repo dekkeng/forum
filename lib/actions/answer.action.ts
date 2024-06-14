@@ -9,6 +9,7 @@ import {
   CreateAnswerParams,
   DeleteAnswerParams,
   EditAnswerParams,
+  GetAnswerByIdParams,
   GetAnswersParams,
 } from "@/types/shared";
 import { revalidatePath } from "next/cache";
@@ -114,6 +115,24 @@ export async function getAnswers(params: GetAnswersParams) {
   }
 }
 
+export async function getAnswerById(params: GetAnswerByIdParams) {
+  try {
+    connectToDatabase();
+
+    const { answerId } = params;
+
+    const answer = await Answer.findById(answerId).populate(
+      "author",
+      "_id clerkId name picture"
+    );
+
+    return answer;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 export async function upvoteAnswer(params: AnswerVoteParams) {
   try {
     connectToDatabase();
@@ -141,7 +160,6 @@ export async function upvoteAnswer(params: AnswerVoteParams) {
       throw new Error("Answer not found");
     }
 
-    // Increment author's reputation
     await User.findByIdAndUpdate(userId, {
       $inc: { reputation: hasupVoted ? -2 : 2 },
     });
